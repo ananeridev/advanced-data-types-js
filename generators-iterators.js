@@ -14,13 +14,9 @@ function* main() {
 
 const generator = main();
 
-// next e outros valores por padrao
-// console.log(generator.next()); 
-
-// { value: 'Hello', done: false }   
-
-// console.log(generator.next())
-// console.log(generator.next())
+console.log(generator.next()); 
+console.log(generator.next())
+console.log(generator.next())
 
 // se o done tiver true a execucao do generator terminou
 // na segunda chamada retorna undefiened
@@ -35,11 +31,10 @@ assert.deepStrictEqual(generator.next(), { value: '--', done: false });
 assert.deepStrictEqual(generator.next(), { value: 'Bye', done: false });
 assert.deepStrictEqual(generator.next(), { value: 25, done: false });
 
-// array from retorna o objeto a partir do generator
-// console.log('Array from', Array.from(main()), ['Hello', 'Guys', '--', 'Bye', 25])
+console.log('Array from', Array.from(main()), ['Hello', 'Guys', '--', 'Bye', 25])
 
 // rest spread
-// console.log([...main()], ['Hello', 'Guys', '--', 'Bye', 25])
+console.log([...main()], ['Hello', 'Guys', '--', 'Bye', 25])
 
 
 // -- async iterators
@@ -61,10 +56,10 @@ async function* systemInfo() {
   yield { dir }
 }
 
-// Promise.all([...promisified()]).then(results => {
-//     console.log('promisified', results)
+Promise.all([...promisified()]).then(results => {
+     console.log('promisified', results)
 
-// } )
+} )
 
 // -- closure
 ;(async () => {
