@@ -68,4 +68,5 @@ Promise.all([...promisified()]).then(results => {
     }
 })()
 
+// No fim Generator é uma forma de criar iteradores de forma mais simples e legível
 
