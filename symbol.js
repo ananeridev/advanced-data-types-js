@@ -50,6 +50,31 @@ class MyDate {
     constructor(...args) {
         this[kItems] = args.map(arg => new Date(...arg))
     }
+   [Symbol.toPrimitive](coercionType) { 
+    if(coercionType !== "string") throw new TypeError()
+    const items = this[kItems]
+                .map(item => 
+                    new Intl.DateTimeFormat('pt-BR', { month: 'long', day: '2-digit', year: 'numeric'})
+                    .format(item))
+    return new Intl.ListFormat('pt-BR', { style: 'long', type: 'conjunction'}).format(items)
+   }
+    *[Symbol.iterator]() { 
+        for (const item of this[kItems]) {
+            yield item
+        }
+    }
+    // pra trabalhar com promises
+    async *[Symbol.asyncIterator]() {
+        const timeout = ms => new Promise(resolve => setTimeout(resolve, ms))
+        for (const item of this[kItems]) {
+            await timeout(100)
+            yield item.toISOString()
+        }
+    }
+   get [Symbol.toStringTag]() { 
+        return 'WHAT'
+    
+    }
 }
 
 
@@ -57,3 +82,28 @@ const myDate = new MyDate([1995, 7, 24], [1995, 7, 25])
 const expectedDates = [ new Date (1995, 7, 24), new Date (1995, 7, 25) ]
 
 console.log('myDate', myDate[kItems])
+
+// promises.js - projeto node.js
+
+assert.deepStrictEqual(Object.prototype.toString.call(myDate), '[object WHAT]')
+assert.throws(() => myDate + 1,  TypeError)
+
+// coercao explicita para chamar o toPrimitive
+assert.deepStrictEqual(String(myDate), '24 de agosto de 1995 e 25 de agosto de 1995' )
+
+// implementar o iterator!
+assert.deepStrictEqual([...myDate], expectedDates)
+
+// ;(async() => {
+//     for await (const item of myDate) {
+//         console.log('asyncIterator', item)
+//     }
+// })()
+// asyncIterator 1995-08-24T03:00:00.000Z
+// asyncIterator 1995-08-25T03:00:00.000Z
+
+// meta programacao pra garantir os tipos de dados, pra garantir que o usuario nao vai ter acesso direto nos dados
+;(async() => {
+    const dates = await Promise.all([...myDate])
+    assert.deepStrictEqual(dates, expectedDates)
+})()
