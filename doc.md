@@ -65,4 +65,14 @@ Ele ganha com vantagem em nivel de performcance, os dados so ficam nele enquanto
 
 Essa estrutura acada sendo raridade a nao ser que trabalhe em ferramentas internas!
 
-*tem um exemplo de utilizacao do weakmap no errors.js do projeto do node*
+*tem um exemplo de utilizacao do weakmap no errors.js do projeto do node:*
+
+[encoding.js](https://github.com/nodejs/node/blob/14699846452e627f97dedb85991eea67d932a79d/lib/internal/encoding.js#L76)
+
+[inspector.js](https://github.com/nodejs/node/blob/dd5f209213a2b75bb386b44c296a059fc10dfb02/lib/inspector.js#L51)
+
+[errors.js](https://github.com/nodejs/node/blob/893d8a60cbf7ae3d42655547beb703249b96d895/lib/internal/errors.js#L78)
+
+# Set e WakSet
+
+Referencias de listas unicas - uma opcao melhor do que fazer map e reduce
