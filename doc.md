@@ -34,6 +34,7 @@ Na classe MyDate, esses símbolos bem conhecidos são usados para personalizar o
 
 # Map e WeakMap
 
+## Map
 No prototype chain quase tudo e herdado de Object, o que eh bom e ruim visto que se herda metodos da classe base, caso a classe base necessite de mais comportamentos;
 todas as classes filhas sao afetadas.
 
@@ -42,3 +43,26 @@ Map eh mais indicado em cenarios que precisamos mudar chaves dinamicamente.
 Melhor semantica de dados, traz varios metodos para troca de chaves de forma semantica ele implementa o ppadrao Generator!
 
 Um otimo beneficio do map eh que podemos usar objetos como chaves de pesquisa, enquanto object trabalha apenas com strings e symbols
+
+**Na pratica eu posso usar a estrutura map ao inves do objeto nos seguintes casos:**
+
+**- Preciso adiconar uma chave com frequencia**
+
+**- Validar se a chave existe de forma semantica**
+
+**- Preciso que o objeto funcione como banco de dados**
+
+**- Casos que precisa limpar a referencia apos o uso(html -> user clica no botao reset)**
+
+## Weak Map
+Em caso de ter que adicionar e remover chaves do objeto e posso pesquisar pelo ID, o weak map pode ajudar
+
+No weak map so posso usar objetos como chave e ele nao eh enumerador! (nao da pra navegar com for of)
+
+Ele ganha com vantagem em nivel de performcance, os dados so ficam nele enquanto existirem em memoria
+
+**Fibonacci - weak map teria uma boa utilizacao pois o js poderia limpar os dados que nao estao mais sendo utilizados**
+
+Essa estrutura acada sendo raridade a nao ser que trabalhe em ferramentas internas!
+
+*tem um exemplo de utilizacao do weakmap no errors.js do projeto do node*
