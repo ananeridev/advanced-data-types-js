@@ -76,3 +76,16 @@ Essa estrutura acada sendo raridade a nao ser que trabalhe em ferramentas intern
 # Set e WakSet
 
 Referencias de listas unicas - uma opcao melhor do que fazer map e reduce
+
+*tem um exemplo de utilizacao do weakmap no errors.js do projeto do node:*
+[url.js](https://github.com/nodejs/node/blob/00b5ee6083bfbd8e3f63a574411300c5e5f42bd7/lib/url.js#L105)
+[iterable_weak_map.js](https://github.com/nodejs/node/blob/cef144421c5ff6e9677ecf0b7a607000b744aa13/lib/internal/util/iterable_weak_map.js#L34)
+[event_target.js](https://github.com/nodejs/node/blob/dc79f3f37caf6f25b8efee4623bec31e2c20f595/lib/internal/event_target.js#L95)
+
+# Reflection
+
+Interceptar comportamento padrao das funções... ele veio pra usar problemas de semântica do js
+
+No projeto do Nodejs usam para fazer cópias seguras dos objetos - makeSafe function
+
+# Proxy e Node.js timers
