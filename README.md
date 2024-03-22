@@ -89,3 +89,34 @@ Interceptar comportamento padrao das funções... ele veio pra usar problemas de
 No projeto do Nodejs usam para fazer cópias seguras dos objetos - makeSafe function
 
 # Proxy e Node.js timers
+
+Estrutura Proxy é parecido com o design patterns Observer.. ele fica esperando as funções serem executadas com tempo limites dependendo do operador
+core.js http2
+
+Basicamente o flluxo de vida do node.js temos os:
+setInterval
+setTimeout
+setImmediate
+process.nextTick
+
+No print que mostra a exeução do código do exemplo se indentifica muito bem como que eles operam
+
+```
+counter updated { newValue: 2, key: 0 }
+[0]: nextTick
+counter updated { newValue: 4, key: 2 }
+[0]: setTimeout
+[0]: setImmediate 4
+counter updated { newValue: 5, key: 4 }
+[0]: setInterval
+counter updated { newValue: 6, key: 5 }
+[0]: setInterval
+counter updated { newValue: 7, key: 6 }
+[0]: setInterval
+counter updated { newValue: 8, key: 7 }
+[0]: setInterval
+counter updated { newValue: 9, key: 8 }
+[0]: setInterval
+counter updated { newValue: 10, key: 9 }
+[0]: setInterval
+```
